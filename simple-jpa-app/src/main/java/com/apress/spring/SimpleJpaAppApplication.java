@@ -22,7 +22,9 @@ public class SimpleJpaAppApplication {
 	CommandLineRunner start (JournalService service) {
 		return args -> {
 			log.info("@@ 데이터 생성....");
-			service.insertData();
+			// service.insertData() 로 data 생성시 아래 주석 해제하고
+			// resources/data.sql 파일을 data.sql.back file로 변경해서 해당 파일이 실행되지 않게 하세요.
+//			service.insertData();
 			log.info("@@ findAll() 호출...");
 			service.findAll().forEach(entry -> log.info(entry.toString()));
 			log.info("@@ findCustom() 호출...");
