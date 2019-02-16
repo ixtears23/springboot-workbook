@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc/"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc/ http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:component-scan base-package="com.ibdata.mvc" />
+	
+<!-- 	<annotation-driven /> -->
+	
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/jsp/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	
+	
+<!-- 	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/> -->
+<!-- 	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/> -->
+<!-- 	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver"/> -->
+	
+	
+	<!--	ContentNegotiatingViewResolver
+		- 뷰 자체를 해석하지 않지만 다른 ViewResolver에 위임합니다.
+		- 기본적으로 이러한 other view resolvers는 application context에서 자동으로 선택되지만
+			viewResolvers 속성을 사용하여 명시 적으로 설정할 수도 있습니다.
+		- [Note] 이 view resolver 가 제대로 작동하려면 order 속성을 다른 속성보다 더 높은 우선 순위로 설정해야합니다
+			(기본값은 Ordered.HIGHEST_PRECEDENCE 임).
+		- 이 view resolver는 요청 된 media type을 사용하여 요청에 적합한보기를 선택합니다.
+			요청된 media type은 구성된 ContentNegotiationManager를 통해 결정됩니다.
+			
+		- PDF, EXCEL, JSON, XML 뷰 등과 같은 다른 뷰를 URL 확장 또는 Accept 헤더 또는 쿼리 매개 변수를 기반으로 해결하는 데 사용된다.
+		- 기본적으로 Spring MVC 애플리케이션은 URL 확장을 먼저 확인하여 요청 미디어 유형을 확인한 다음 Accept 헤더 및 쿼리 매개 변수를 선택합니다.
+			기본 콘텐츠 유형이 사용 설정되지 않은 경우 사용됩니다.
+		- 웹 @Configuration 클래스에서 WebMvcConfigurerAdapter의 configureContentNegotiation () 메서드를 재정 의하여 내용 협상 옵션을 구성 할 수 있습니다.
+		- 
+		
+	-->
+<!-- 	<beans:bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver"/> -->
+	
+	
+<!-- 	<beans:bean id="mappingJackson2JsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/> -->
+	
+	
+	<!-- tiles 설정 -->
+	<beans:bean id="tileViewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>
+	
+	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>
+				<beans:value>/WEB-INF/tiles/definitions.xml</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+	
+</beans:beans>
