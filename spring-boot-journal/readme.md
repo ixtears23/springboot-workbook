@@ -29,3 +29,7 @@ spring boot cli로 생성
  4. http://localhost/api/journal/search/findByTitleContaining?word=부트  
   - JournalRepository.java  
     - @RepositoryRestResource(collectionResourceRel="entry", path="journal")  
+    
+ 5. http://localhost:13200/api/browser/
+  - pom.xml
+    - g=org.springframework.data a=spring-data-rest-hal-browser
