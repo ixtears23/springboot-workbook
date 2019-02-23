@@ -21,9 +21,8 @@ import com.ibdata.mvc.negotiation.view.resolver.StudentPdfViewResolver;
 import com.ibdata.mvc.negotiation.view.resolver.StudentRssFeedViewResolver;
 import com.ibdata.mvc.negotiation.view.resolver.StudentXmlViewResolver;
 
-//@Configuration
-//@EnableWebMvc
-//@ComponentScan(basePackages = { "com.boraji.tutorial.spring.controller" })
+@Configuration
+@EnableWebMvc
 public class WebConfig 
 //implements WebMvcConfigurer
 {
@@ -60,7 +59,7 @@ public class WebConfig
       StudentRssFeedViewResolver feedResolver = new StudentRssFeedViewResolver();
 
       // JSP View Resolver
-      InternalResourceViewResolver jspResolver = new InternalResourceViewResolver("/WEB-INF/views/", ".jsp");
+      InternalResourceViewResolver jspResolver = new InternalResourceViewResolver("/WEB-INF/views/jsp/", ".jsp");
 
       // Add views to list
       List<ViewResolver> resolvers = new ArrayList<>();

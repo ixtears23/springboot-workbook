@@ -11,7 +11,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceView;
 
 @ControllerAdvice
-@EnableWebMvc
 public class GlobalExceptionHandler {
 	
 	Logger log = LoggerFactory.getLogger(this.getClass());
