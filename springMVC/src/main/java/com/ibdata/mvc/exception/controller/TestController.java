@@ -17,6 +17,15 @@ public class TestController {
 		}
 	}
 	
+	@RequestMapping("/arithmeticExMapping")
+	public void arithmeticExMapping() throws Exception {
+		boolean exception = true;
+		
+		if(exception) {
+			throw new ArithmeticException();
+		}
+	}
+	
 	@RequestMapping("/indexExMapping")
 	public void indexExMapping() throws Exception {
 		boolean exception = true;

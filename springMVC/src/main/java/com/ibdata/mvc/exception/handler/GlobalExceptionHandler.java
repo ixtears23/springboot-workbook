@@ -21,14 +21,14 @@ public class GlobalExceptionHandler {
 	private static Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
 	@ExceptionHandler(FileNotFoundException.class)
-	@ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR, reason = "진심 왜그러니")
+	@ResponseStatus(code = HttpStatus.FORBIDDEN, reason = "이유는 FileNotFoundException")
 	public ModelAndView fileExceptionHandler(HttpServletRequest request, IOException exception) throws Exception {
 		
 		log.debug("FileNotFoundException ::: {}", exception);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
-		InternalResourceView view = new InternalResourceView("/doException");
+		InternalResourceView view = new InternalResourceView("/home.do");
 		modelAndView.setView(view);
 		
 		
@@ -36,34 +36,34 @@ public class GlobalExceptionHandler {
 		return modelAndView; 
 	}
 	
-	@ExceptionHandler({ NullPointerException.class })
-	@ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR, reason = "진심 왜그러니")
-	public ModelAndView nullExceptionHandler(HttpServletRequest request, Exception exception) throws Exception {
+	@ExceptionHandler({ ArithmeticException.class })
+	public String arithmeticExceptionHandler(HttpServletRequest request, ArithmeticException exception) throws Exception {
 		
 		log.debug("NullPointerException ::: {}", exception);
+		return "forward:/home.do"; 
+	}
+	@ExceptionHandler({ NullPointerException.class })
+	@ResponseStatus(code = HttpStatus.OK, reason = "이유는 NullPointerException")
+	public String nullExceptionHandler(HttpServletRequest request, NullPointerException exception) throws Exception {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
-		InternalResourceView view = new InternalResourceView("/doException");
+		InternalResourceView view = new InternalResourceView("/home.do");
 		modelAndView.setView(view);
-		
-		
-		
-		return modelAndView; 
+		log.debug("NullPointerException ::: {}", exception);
+		return "home"; 
 	}
 	
 	@ExceptionHandler(IndexOutOfBoundsException.class)
-	@ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR, reason = "진심 왜그러니")
+	@ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "이유는 IndexOutOfBoundsException")
 	public ModelAndView indexExceptionHandler(HttpServletRequest request, IndexOutOfBoundsException exception) throws Exception {
 		
 		log.debug("IndexOutOfBoundsException ::: {}", exception);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
-		InternalResourceView view = new InternalResourceView("/doException");
+		InternalResourceView view = new InternalResourceView("/home.do");
 		modelAndView.setView(view);
-		
-		
 		
 		return modelAndView; 
 	}
