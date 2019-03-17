@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>BORAJI.COM</title>
+<title>junseok.COM</title>
 </head>
 <body>
   <h2>Spring MVC 4 - ContentNegotiatingViewResolver example</h2>
